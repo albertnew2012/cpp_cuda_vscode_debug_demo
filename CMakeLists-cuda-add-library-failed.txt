@@ -21,7 +21,7 @@ include_directories(
 )
 
 # Add the CUDA library
-add_library(pointpillars_detection_lib STATIC src/scatter.cu)
+cuda_add_library(pointpillars_detection_lib STATIC src/scatter.cu)
 
 # Add the main executable
 add_executable(test_pointpillars_detection src/main.cpp)
@@ -29,5 +29,5 @@ add_executable(test_pointpillars_detection src/main.cpp)
 # Link the CUDA library to the main executable
 target_link_libraries(test_pointpillars_detection pointpillars_detection_lib ${CUDA_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
-# Ensure CUDA separable compilation is off
-# set_target_properties(pointpillars_detection_lib PROPERTIES CUDA_SEPARABLE_COMPILATION OFF)
+# Ensure CUDA separable compilation
+set_target_properties(pointpillars_detection_lib PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
