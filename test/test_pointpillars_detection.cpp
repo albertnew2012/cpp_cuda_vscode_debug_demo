@@ -1,8 +1,3 @@
-/// Copyright 2024 SafeAI, Inc.
-/// \file test_pointpillars_detection.cpp
-/// \brief This file implements unit test for scatter cuda class
-
-
 #include <gtest/gtest.h>
 #include <cuda_runtime.h>
 #include "pointpillars_detection/scatter.hpp"

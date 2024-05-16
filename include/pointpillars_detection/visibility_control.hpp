@@ -1,7 +1,3 @@
-/// \copyright Copyright 2024 SafeAI, Inc.
-/// \file visibility_control.hpp
-/// \brief This file declares visibility control macros
-
 #ifndef POINTPILLARS_DETECTION__VISIBILITY_CONTROL_HPP_
 #define POINTPILLARS_DETECTION__VISIBILITY_CONTROL_HPP_
 

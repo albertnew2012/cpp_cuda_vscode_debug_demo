@@ -1,7 +1,3 @@
-/// Copyright 2024 SafeAI, Inc.
-/// \file scatter.hpp
-/// \brief Class declaration of ScatterCuda class
-
 #ifndef POINTPILLARS_DETECTION__SCATTER_HPP_
 #define POINTPILLARS_DETECTION__SCATTER_HPP_
 

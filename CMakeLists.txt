@@ -23,12 +23,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS}
 # Add library
 add_library(${PROJECT_NAME} STATIC src/scatter.cu)
 
-# Add test executable if(BUILD_TESTING)
-enable_testing()
-add_executable(test_${PROJECT_NAME} test/test_pointpillars_detection.cpp)
-set_target_properties(test_${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION
-                                                      ON)
-target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} ${GTEST_LIBRARIES}
-                      pthread)
-add_test(NAME test_${PROJECT_NAME} COMMAND test_${PROJECT_NAME})
-# endif()
+# Define the BUILD_TESTING option
+option(BUILD_TESTING "Build the testing tree." ON)
+# Add test executable
+if(BUILD_TESTING)
+  enable_testing()
+  add_executable(test_${PROJECT_NAME} test/test_pointpillars_detection.cpp)
+  set_target_properties(test_${PROJECT_NAME}
+                        PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+  target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} ${GTEST_LIBRARIES}
+                        pthread)
+  add_test(NAME test_${PROJECT_NAME} COMMAND test_${PROJECT_NAME})
+endif()
