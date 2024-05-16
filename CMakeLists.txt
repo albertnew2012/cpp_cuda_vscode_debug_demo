@@ -21,7 +21,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS}
                     ${GTEST_INCLUDE_DIRS})
 
 # Add library
-cuda_add_library(${PROJECT_NAME} STATIC src/scatter.cu)
+add_library(${PROJECT_NAME} STATIC src/scatter.cu)
 
 # Add test executable if(BUILD_TESTING)
 enable_testing()
