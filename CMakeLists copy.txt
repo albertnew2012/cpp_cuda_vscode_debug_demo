@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.5)
+project(pointpillars_detection CUDA CXX)
+
+
+# set(CMAKE_BUILD_TYPE RelWithDebInfo)
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -g -G")
+# set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS} -g -G)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+# ##############################################################################
+# Default to C++17
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
+
+find_package(CUDA REQUIRED QUIET)
+
+# ##############################################################################
+
+include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/pointpillars_detection
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/si
+  ${CUDA_INCLUDE_DIRS})
+
+# target_link_libraries(${TENSORRT_LIBRARY})
+
+# ##############################################################################
+
+# ##############################################################################
+# create a shared library that contains lidar_interface node's participant class
+cuda_add_library(
+  ${PROJECT_NAME}
+  STATIC
+  src/scatter.cu
+  )
+
+# target_link_libraries(
+#   ${PROJECT_NAME}
+#   # interfaces ${PCL_LIBRARIES} stdc++fs yaml-cpp ${CMAKE_THREAD_LIBS_INIT}
+#   # ${OpenMP_CXX_FLAGS} /usr/local/cuda/lib64/libcusparse.so
+#   # /usr/local/cuda/lib64/libcudart.so /opt/cudnn/lib64/libcudnn_cnn_infer.so
+#   # ${TENSORRT_LIBRARY} ${TENSORRT_LIBRARY_DIR}/libnvinfer.so
+#   # ${TENSORRT_LIBRARY_DIR}/libnvparsers.so
+#   # ${TENSORRT_LIBRARY_DIR}/libnvonnxparser.so
+# )
+
+# Testing part
+if(BUILD_TESTING)
+  add_gtest(test_${PROJECT_NAME} test/test_pointpillars_detection.cpp)
+
+  target_link_libraries(test_${PROJECT_NAME} "${PROJECT_NAME}")
+endif()
