@@ -1,0 +1,21 @@
+{
+    "configurations": [
+      {
+        "browse": {
+          "databaseFilename": "${default}",
+          "limitSymbolsToIncludedHeaders": false
+        },
+        "includePath": [
+          "/usr/include/**",
+          "${env:HOME}/adehome/albertl/CUDA_kernel_scatter_debug/include/**",
+          "/usr/local/cuda-11.8/targets/x86_64-linux/include"
+        ],
+        "name": "ROS",
+        "intelliSenseMode": "gcc-x64",
+        "compilerPath": "/usr/bin/gcc",
+        "cStandard": "gnu11",
+        "cppStandard": "c++14"
+      }
+    ],
+    "version": 4
+  }
