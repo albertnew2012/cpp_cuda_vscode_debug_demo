@@ -2,10 +2,30 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "CUDA Debug",
-        "type": "cuda-gdb",
+        "name": "CPP Debug",
+        "type": "cppdbg",
         "request": "launch",
-        "gdb": "cuda-gdb",
+        "program": "${workspaceFolder}/build/test_pointpillars_detection",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ],
+        // "preLaunchTask": "None"
+      },
+      {
+        "name": "CPP Debug with args",
+        "type": "cppdbg",
+        "request": "launch",
         "program": "${workspaceFolder}/build/test_pointpillars_detection",
         "args": [],
         "stopAtEntry": true,
@@ -20,7 +40,67 @@
             "ignoreFailures": true
           }
         ],
-        "preLaunchTask": "build"
+        // "preLaunchTask": "None"
+      },
+      {
+        "name": "CUDA Debug with args",
+        "type": "cuda-gdb",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/test_pointpillars_detection",
+        "args": ["--input", "data.txt", "--verbose", "--threads", "4"],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ],
+        // "preLaunchTask": "None"
+      },      
+      {
+        "name": "CUDA Debug with args",
+        "type": "cuda-gdb",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/test_pointpillars_detection",
+        "args": ["--input", "data.txt", "--verbose", "--threads", "4"],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ],
+        // "preLaunchTask": "None"
+      },    
+      {
+        "name": "CUDA Debug with args old style",
+        "type": "cuda-gdb",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/test_pointpillars_detection",
+        "args": "--input data.txt --verbose --threads 4", // in order ubuntu, cuda-gdb only accepts args as string
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ],
+        // "preLaunchTask": "None"
       }
     ]
   }

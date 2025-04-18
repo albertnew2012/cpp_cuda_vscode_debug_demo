@@ -7,8 +7,12 @@
         "command": "sh",
         "args": [
           "-c",
-          "rm -rf build && mkdir build && cd build && cmake .."
+          "rm -rf build && mkdir build && cd build && cmake .. && cmake --build ."
         ],
+
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
         "problemMatcher": [],
         "group": {
           "kind": "build",
@@ -18,18 +22,19 @@
       {
         "label": "build",
         "type": "shell",
-        "command": "cmake",
+        "command": "sh",
         "args": [
-          "--build",
-          "build"
+          "-c",
+          "mkdir -p build && cd build && cmake .. && cmake --build ."
         ],
-        "dependsOn": "clean_build",
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": [],
         "group": {
           "kind": "build",
-          "isDefault": true
-        },
-        "problemMatcher": ["$gcc"]
+          "isDefault": false
+        }
       }
     ]
   }
-  
