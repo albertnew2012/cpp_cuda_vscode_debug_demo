@@ -19,6 +19,7 @@ docker run \
     --shm-size=128G \
     --privileged=true \
     -v $REPO_DIR:/$DIR_NAME \
+    -v /home/$USER:/home/$USER_NAME \
     -v /etc/localtime:/etc/localtime:ro \
     -v /etc/timezone:/etc/timezone:ro \
     -w /$DIR_NAME \
